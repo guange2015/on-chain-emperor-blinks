@@ -69,7 +69,7 @@ export async function GET(request: NextRequest) {
     }
 
     const payload = {
-      icon: "/icon.png", // Keep placeholder or change
+      icon: "https://on-chain-emperor-blinks.vercel.app/icon.png", // Keep placeholder or change
       label: label,
       title: title,
       description: description,
