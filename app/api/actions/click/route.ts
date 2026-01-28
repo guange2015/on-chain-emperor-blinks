@@ -8,7 +8,8 @@ const ACTIONS_CORS_HEADERS: HeadersInit = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,POST,PUT,OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization, Content-Encoding, Accept-Encoding",
-  "X-Action-Version": "1"
+  "x-blockchain-ids": 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp',
+  "x-action-version": "2.4",             // 当前最新规范版本（写死 2.4 基本没问题）
 };
 
 const PROGRAM_ID = new PublicKey(idl.address);
