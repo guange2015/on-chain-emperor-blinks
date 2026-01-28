@@ -41,7 +41,7 @@ export async function OPTIONS(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    const connection = new Connection("http://127.0.0.1:8899", "confirmed");
+    const connection = new Connection(process.env.RPC_URL || "http://127.0.0.1:8899", "confirmed");
     const program = getProgram(connection);
 
     const [gamePda] = PublicKey.findProgramAddressSync(
