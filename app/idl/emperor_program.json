@@ -1,0 +1,290 @@
+{
+  "address": "4sxn3qGzcZYL9JQo49d9ortr7eMJmsKakkvYZywKt6ji",
+  "metadata": {
+    "name": "emperor_program",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "claim_throne",
+      "discriminator": [
+        156,
+        211,
+        29,
+        212,
+        235,
+        143,
+        22,
+        35
+      ],
+      "accounts": [
+        {
+          "name": "game",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  97,
+                  109,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "current_emperor_account",
+          "writable": true
+        },
+        {
+          "name": "fee_recipient_account",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "game",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  97,
+                  109,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "treasury",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  101,
+                  97,
+                  115,
+                  117,
+                  114,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "round_duration",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "withdraw_principal",
+      "discriminator": [
+        6,
+        59,
+        175,
+        16,
+        210,
+        146,
+        119,
+        63
+      ],
+      "accounts": [
+        {
+          "name": "game",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  97,
+                  109,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "treasury",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  101,
+                  97,
+                  115,
+                  117,
+                  114,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Game",
+      "discriminator": [
+        27,
+        90,
+        166,
+        125,
+        74,
+        100,
+        121,
+        18
+      ]
+    },
+    {
+      "name": "Treasury",
+      "discriminator": [
+        238,
+        239,
+        123,
+        238,
+        89,
+        1,
+        168,
+        253
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "BidTooLow",
+      "msg": "Bid is too low. Must be at least 10% higher than current bid."
+    },
+    {
+      "code": 6001,
+      "name": "InvalidEmperor",
+      "msg": "Provided emperor account does not match game record."
+    },
+    {
+      "code": 6002,
+      "name": "InvalidFeeRecipient",
+      "msg": "Provided fee recipient account does not match game record."
+    },
+    {
+      "code": 6003,
+      "name": "Overflow",
+      "msg": "Calculation overflow."
+    },
+    {
+      "code": 6004,
+      "name": "GameEnded",
+      "msg": "Game has ended."
+    },
+    {
+      "code": 6005,
+      "name": "GameNotEnded",
+      "msg": "Game has not ended yet."
+    },
+    {
+      "code": 6006,
+      "name": "NotEmperor",
+      "msg": "You are not the current emperor."
+    }
+  ],
+  "types": [
+    {
+      "name": "Game",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "current_emperor",
+            "type": "pubkey"
+          },
+          {
+            "name": "current_bid",
+            "type": "u64"
+          },
+          {
+            "name": "fee_recipient",
+            "type": "pubkey"
+          },
+          {
+            "name": "expiry_time",
+            "type": "i64"
+          },
+          {
+            "name": "round_duration",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Treasury",
+      "type": {
+        "kind": "struct",
+        "fields": []
+      }
+    }
+  ]
+}
